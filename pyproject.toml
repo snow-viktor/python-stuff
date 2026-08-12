@@ -1,0 +1,29 @@
+[project]
+name = "python-stuff"
+version = "0.1.0"
+description = "Small Python tools, games, and algorithms, managed with uv."
+readme = "README.md"
+authors = [ { name = "SnowViktor" } ]
+requires-python = ">=3.14"
+dependencies = [
+    "requests",
+    "schemdraw",
+]
+
+[tool.uv]
+link-mode = "copy"
+
+[project.scripts]
+python-stuff = "python_stuff:main"
+cipher = "python_stuff.cipher:main"
+circuit-diagram = "python_stuff.circuit_diagram:main"
+is-prime = "python_stuff.is_prime:main"
+number-guessing = "python_stuff.number_guessing:main"
+password = "python_stuff.password:main"
+roger-2486 = "python_stuff.roger_2486:main"
+runway-number = "python_stuff.angle_to_runway_number:main"
+taiwan-aqi = "python_stuff.taiwan_aqi:main"
+
+[build-system]
+requires = ["uv_build>=0.12.3,<0.13.0"]
+build-backend = "uv_build"

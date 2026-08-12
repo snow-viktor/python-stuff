@@ -1,7 +1,10 @@
+from itertools import cycle
+
+
 def caesar_cipher(text: str, offset: int) -> str:
     """
-    >>> caesar_cipher("Python 3.13.3", 1)
-    "Qzuipo 4.24.4"
+    >>> caesar_cipher("Python 3.14.7", 1)
+    "Qzuipo 4.25.8"
     """
 
     ALPHABET = "abcdefghijklmnopqrstuvwxyz"
@@ -18,8 +21,8 @@ def caesar_cipher(text: str, offset: int) -> str:
 
 def vigenere_cipher(text: str, key: str) -> str:
     """
-    >>> vigenere_cipher("Python 3.13.3", "key")
-    "Pcrrsl 7.17.3"
+    >>> vigenere_cipher("Python 3.14.7", "key")
+    "Pcrrsl 7.18.7"
     """
 
     ALPHABET = "abcdefghijklmnopqrstuvwxyz"
@@ -28,15 +31,27 @@ def vigenere_cipher(text: str, key: str) -> str:
     def shift(char, offset):
         if char in ALPHABET:
             return ALPHABET[(ALPHABET.index(char) + offset) % 26]
-        elif char in DIGITS:
+        if char in DIGITS:
             return DIGITS[(int(char) + offset) % 10]
         return char
 
-    key = key.lower()
-    key = key * (len(text) // len(key)) + key[: len(text) % len(key)]
-    return "".join(shift(char, ALPHABET.index(key[i])) for i, char in enumerate(text))
+    shifts = (ALPHABET.index(k) for k in cycle(key.lower()))
+    return "".join(shift(char, offset) for char, offset in zip(text, shifts))
+
+
+def main() -> None:
+    method = input("\nChoose caesar or vigenere cipher (c/v): ").strip().lower()
+    text = input("Enter text to encrypt: ")
+
+    if method == "c":
+        offset = int(input("Enter offset: "))
+        print(f"\n{caesar_cipher(text, offset)}")
+    elif method == "v":
+        key = input("Enter key: ")
+        print(f"\n{vigenere_cipher(text, key)}")
+    else:
+        print("Unknown cipher")
 
 
 if __name__ == "__main__":
-    print(caesar_cipher("Python 3.13.3", 1))
-    print(vigenere_cipher("Python 3.13.3", "key"))
+    main()

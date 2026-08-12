@@ -1,7 +1,7 @@
 from random import sample
 
 
-def random_generator(length: int) -> str:
+def password(length: int) -> str:
     """
     The password is ASCII characters and the maximum length of the password is 95 characters.
     """
@@ -13,6 +13,10 @@ def random_generator(length: int) -> str:
     return "".join(PASSWORD[:length])
 
 
+def main() -> None:
+    length = int(input("\nLength: "))
+    print(f"Password:\n{password(length)}")
+
+
 if __name__ == "__main__":
-    length = int(input("\n請輸入密碼長度："))
-    print(f"生成的密碼：\n{random_generator(length)}")
+    main()
