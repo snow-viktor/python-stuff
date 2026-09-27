@@ -1,14 +1,15 @@
 from itertools import cycle
 
+ALPHABET = "abcdefghijklmnopqrstuvwxyz"
+DIGITS = "0123456789"
+_ALPHA_INDEX = {c: i for i, c in enumerate(ALPHABET)}
+
 
 def caesar_cipher(text: str, offset: int) -> str:
     """
     >>> caesar_cipher("Python 3.14.7", 1)
     "Qzuipo 4.25.8"
     """
-
-    ALPHABET = "abcdefghijklmnopqrstuvwxyz"
-    DIGITS = "0123456789"
 
     OFFSET_MAP = {a: ALPHABET[(i + offset) % 26] for i, a in enumerate(ALPHABET)}
     OFFSET_MAP.update(
@@ -25,17 +26,14 @@ def vigenere_cipher(text: str, key: str) -> str:
     "Pcrrsl 7.18.7"
     """
 
-    ALPHABET = "abcdefghijklmnopqrstuvwxyz"
-    DIGITS = "0123456789"
-
     def shift(char, offset):
-        if char in ALPHABET:
-            return ALPHABET[(ALPHABET.index(char) + offset) % 26]
+        if char in _ALPHA_INDEX:
+            return ALPHABET[(_ALPHA_INDEX[char] + offset) % 26]
         if char in DIGITS:
             return DIGITS[(int(char) + offset) % 10]
         return char
 
-    shifts = (ALPHABET.index(k) for k in cycle(key.lower()))
+    shifts = (_ALPHA_INDEX[k] for k in cycle(key.lower()))
     return "".join(shift(char, offset) for char, offset in zip(text, shifts))
 
 

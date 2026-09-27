@@ -1,6 +1,6 @@
 [project]
 name = "python-stuff"
-version = "0.1.0"
+version = "0.1.1"
 description = "Small Python tools, games, and algorithms, managed with uv."
 readme = "README.md"
 authors = [ { name = "SnowViktor" } ]
@@ -21,7 +21,7 @@ is-prime = "python_stuff.is_prime:main"
 number-guessing = "python_stuff.number_guessing:main"
 password = "python_stuff.password:main"
 roger-2486 = "python_stuff.roger_2486:main"
-runway-number = "python_stuff.angle_to_runway_number:main"
+runway-number = "python_stuff.runway_number:main"
 taiwan-aqi = "python_stuff.taiwan_aqi:main"
 
 [build-system]

@@ -5,7 +5,7 @@ Small Python tools, games, and algorithms, managed with [uv](https://docs.astral
 ## Install
 
 ```sh
-uv sync --all-groups
+uv sync
 ```
 
 ## Usage

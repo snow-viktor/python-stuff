@@ -35,16 +35,16 @@
 ### f-string 格式化
 
 ```python
-f"{variable}"              # 基本
-f"{variable:.2f}"          # 小數點2位
-f"{variable:>10}"          # 右對齊，寬度10
-f"{variable:<10}"          # 左對齊
-f"{variable:^10}"          # 居中對齊
-f"{variable:0>10}"         # 右側補零
-f"{variable:,}"            # 千分位逗號
-f"{variable:%}"            # 百分比
-f"{variable!r}"            # repr()
-f"{variable!s}"            # str()
+f"{variable:.2f}"       # 小數點2位
+f"{variable:02d}"       # 兩位數補0
+f"{variable:>10}"       # 靠右對齊，寬度10
+f"{variable:<10}"       # 靠左對齊
+f"{variable:^10}"       # 居中對齊
+f"{variable:@>10}"      # 靠右對齊，補@
+f"{variable:,}"         # 千分位逗號
+f"{variable:%}"         # 百分比
+f"{variable!r}"         # repr()
+f"{variable!s}"         # str()
 ```
 
 ## Bool 布林
